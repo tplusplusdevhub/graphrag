@@ -6,6 +6,7 @@
 
 def clean_up_json(json_str: str):
     """Clean up json string."""
+    json_str = json_str[json_str.find('{'):]
     json_str = (
         json_str.replace("\\n", "")
         .replace("\n", "")
