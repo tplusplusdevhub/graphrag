@@ -82,7 +82,7 @@ class OpenAIEmbedding(BaseTextEmbedding, OpenAILLMImpl):
         chunk_lens = []
         for chunk in token_chunks:
             try:
-                embedding, chunk_len = self._embed_with_retry(chunk, **kwargs)
+                embedding, chunk_len = self._embed_with_retry(self.token_encoder.decode(chunk), **kwargs)
                 chunk_embeddings.append(embedding)
                 chunk_lens.append(chunk_len)
             # TODO: catch a more specific exception
